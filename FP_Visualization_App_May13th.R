@@ -12,7 +12,11 @@ library(plotly)
 nuts_shape <- st_read("data/nuts/NUTS_RG_60M_2021_4326_LEVL_2.shp")
 
 # --- List forest data files and extract metadata ---
-available_files <- list.files("data/forest/NUTS_averages_per_Fmodel_scenario_case", pattern = "\\.csv$", full.names = FALSE)
+available_files <- list.files("data/forest/NUTS-2_averages_per_Fmodel_scenario_case", pattern = "\\.csv$", full.names = FALSE)
+print(available_files)
+print(available_files)
+print(available_files)
+print(available_files)
 
 # Parse scenario, case, and forest_model from filenames
 file_info <- str_match(available_files, "^(.+?)_(\\d+)_(.+?)\\.csv$")
@@ -96,7 +100,7 @@ server <- function(input, output, session) {
 
   load_forest_data <- function(filename) {
     req(filename)
-    filepath <- file.path("data/forest/NUTS_averages_per_Fmodel_scenario_case", filename)
+    filepath <- file.path("data/forest/NUTS-2_averages_per_Fmodel_scenario_case", filename)
     validate(need(file.exists(filepath), paste("File not found:", filename)))
 
     read_csv(filepath, col_types = cols(
